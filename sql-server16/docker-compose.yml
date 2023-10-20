@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  sysgest.db:
+    container_name: sysgest.db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Qwerty@006
+      - MSSQL_PID=Express
+      - MSSQL_AGENT_ENABLED=true
+      - DB_USER=sa
+      - DB_PASSWORD=Qwerty@006
+      - DB_NAME=SysGest
+    ports:
+      - "1436:1433"
+    volumes:
+      - ./db/:/var/opt/mssql/data
+      - ./backup/:/var/opt/backup
